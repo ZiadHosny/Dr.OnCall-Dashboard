@@ -2,8 +2,8 @@ import { mdiClose } from '@mdi/js'
 import React, { ReactNode, useState } from 'react'
 import { ColorKey } from '../interfaces'
 import { colorsBgLight, colorsOutline } from '../colors'
-import Button from './Button'
-import Icon from './Icon'
+import Button from '../common/Button'
+import Icon from '../common/Icon'
 
 type Props = {
   color: ColorKey

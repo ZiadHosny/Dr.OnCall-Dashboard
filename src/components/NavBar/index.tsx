@@ -1,7 +1,7 @@
 import React, { ReactNode, useState } from 'react'
 import { mdiClose, mdiDotsVertical } from '@mdi/js'
 import { containerMaxW } from '../../config'
-import Icon from '../Icon'
+import Icon from '../../common/Icon'
 import NavBarItemPlain from './Item/Plain'
 import NavBarMenuList from './MenuList'
 import { MenuNavBarItem } from '../../interfaces'
@@ -31,9 +31,8 @@ export default function NavBar({ menu, className = '', children }: Props) {
           </NavBarItemPlain>
         </div>
         <div
-          className={`${
-            isMenuNavBarActive ? 'block' : 'hidden'
-          } max-h-screen-menu overflow-y-auto lg:overflow-visible absolute w-screen top-14 left-0 bg-gray-50 shadow-lg lg:w-auto lg:flex lg:static lg:shadow-none dark:bg-slate-800`}
+          className={`${isMenuNavBarActive ? 'block' : 'hidden'
+            } max-h-screen-menu overflow-y-auto lg:overflow-visible absolute w-screen top-14 left-0 bg-gray-50 shadow-lg lg:w-auto lg:flex lg:static lg:shadow-none dark:bg-slate-800`}
         >
           <NavBarMenuList menu={menu} />
         </div>

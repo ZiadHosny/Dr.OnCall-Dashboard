@@ -1,5 +1,5 @@
 import { Children, cloneElement, ReactElement, ReactNode } from 'react'
-import Icon from '../Icon'
+import Icon from '../../common/Icon'
 
 type Props = {
   label?: string

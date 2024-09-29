@@ -1,7 +1,7 @@
 import React, { ReactNode, useState } from 'react'
 import { useSampleClients } from '../../hooks/sampleData'
-import Button from '../Button'
-import Buttons from '../Buttons'
+import Button from '../../common/Button'
+import Buttons from '../../common/Buttons'
 import CardBoxModal from '../CardBox/Modal'
 
 type Props = {

@@ -1,7 +1,7 @@
 import React from 'react'
 import { MenuAsideItem } from '../../interfaces'
 import AsideMenuLayer from './Layer'
-import OverlayLayer from '../OverlayLayer'
+import OverlayLayer from '../../common/OverlayLayer'
 
 type Props = {
   menu: MenuAsideItem[]
@@ -19,9 +19,8 @@ export default function AsideMenu({
     <>
       <AsideMenuLayer
         menu={props.menu}
-        className={`${isAsideMobileExpanded ? 'left-0' : '-left-60 lg:left-0'} ${
-          !isAsideLgActive ? 'lg:hidden xl:flex' : ''
-        }`}
+        className={`${isAsideMobileExpanded ? 'left-0' : '-left-60 lg:left-0'} ${!isAsideLgActive ? 'lg:hidden xl:flex' : ''
+          }`}
         onAsideLgCloseClick={props.onAsideLgClose}
       />
       {isAsideLgActive && <OverlayLayer zIndex="z-30" onClick={props.onAsideLgClose} />}

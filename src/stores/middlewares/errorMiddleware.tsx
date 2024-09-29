@@ -1,5 +1,5 @@
 import { toast } from 'react-toastify';
-import { ErrorToast, SuccessToast } from '../../components/Toast/CustomToast'
+import { ErrorToast, SuccessToast } from '../../common/Toast/CustomToast'
 
 const errorMiddleware = () => next => action => {
     if (action.type.endsWith('/rejected')) {

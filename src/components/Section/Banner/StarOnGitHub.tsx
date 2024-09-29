@@ -1,7 +1,7 @@
 import { mdiGithub } from '@mdi/js'
 import React from 'react'
 import { gradientBgPinkRed } from '../../../colors'
-import Button from '../../Button'
+import Button from '../../../common/Button'
 import SectionBanner from '.'
 
 const SectionBannerStarOnGitHub = () => {

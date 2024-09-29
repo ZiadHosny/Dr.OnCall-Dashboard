@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { mdiMinus, mdiPlus } from '@mdi/js'
-import Icon from '../Icon'
+import Icon from '../../common/Icon'
 import Link from 'next/link'
 import { getButtonColor } from '../../colors'
 import AsideMenuList from './List'
@@ -36,9 +36,8 @@ const AsideMenuItem = ({ item, isDropdownList = false }: Props) => {
         <Icon path={item.icon} className={`flex-none ${activeClassAddon}`} w="w-16" size="18" />
       )}
       <span
-        className={`grow text-ellipsis line-clamp-1 ${
-          item.menu ? '' : 'pr-12'
-        } ${activeClassAddon}`}
+        className={`grow text-ellipsis line-clamp-1 ${item.menu ? '' : 'pr-12'
+          } ${activeClassAddon}`}
       >
         {item.label}
       </span>
@@ -75,9 +74,8 @@ const AsideMenuItem = ({ item, isDropdownList = false }: Props) => {
       {item.menu && (
         <AsideMenuList
           menu={item.menu}
-          className={`aside-menu-dropdown ${
-            isDropdownActive ? 'block dark:bg-slate-800/50' : 'hidden'
-          }`}
+          className={`aside-menu-dropdown ${isDropdownActive ? 'block dark:bg-slate-800/50' : 'hidden'
+            }`}
           isDropdownList
         />
       )}

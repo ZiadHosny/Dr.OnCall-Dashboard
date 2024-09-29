@@ -1,7 +1,7 @@
 import { mdiEye, mdiTrashCan } from '@mdi/js'
 import { useDoctors } from '../../hooks/doctor'
-import Button from '../Button'
-import Buttons from '../Buttons'
+import Button from '../../common/Button'
+import Buttons from '../../common/Buttons'
 import ZTable from "../Table/Table"
 import UserAvatar from '../UserAvatar'
 

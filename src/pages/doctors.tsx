@@ -1,7 +1,7 @@
 import { mdiDoctor, mdiPlus } from '@mdi/js'
 import Head from 'next/head'
 import React, { ReactElement } from 'react'
-import Button from '../components/Button'
+import Button from '../common/Button'
 import CardBox from '../components/CardBox'
 import LayoutAuthenticated from '../layouts/Authenticated'
 import SectionMain from '../components/Section/Main'

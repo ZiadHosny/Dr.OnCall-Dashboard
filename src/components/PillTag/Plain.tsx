@@ -1,5 +1,5 @@
 import React from 'react'
-import Icon from '../Icon'
+import Icon from '../../common/Icon'
 
 type Props = {
   label?: string
@@ -11,9 +11,8 @@ type Props = {
 const PillTagPlain = ({ small = false, className = '', ...props }: Props) => {
   return (
     <div
-      className={`inline-flex items-center capitalize leading-none ${
-        small ? 'text-xs' : 'text-sm'
-      } ${className}`}
+      className={`inline-flex items-center capitalize leading-none ${small ? 'text-xs' : 'text-sm'
+        } ${className}`}
     >
       {props.icon && (
         <Icon

@@ -10,7 +10,7 @@ import {
 import Head from 'next/head'
 import React, { useState } from 'react'
 import type { ReactElement } from 'react'
-import Button from '../components/Button'
+import Button from '../common/Button'
 import LayoutAuthenticated from '../layouts/Authenticated'
 import SectionMain from '../components/Section/Main'
 import SectionTitleLineWithButton from '../components/Section/TitleLineWithButton'

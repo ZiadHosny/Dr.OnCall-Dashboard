@@ -2,8 +2,8 @@ import React from 'react'
 import Link from 'next/link'
 import { useState } from 'react'
 import { mdiChevronUp, mdiChevronDown } from '@mdi/js'
-import Divider from '../../Divider'
-import Icon from '../../Icon'
+import Divider from '../../../common/Divider'
+import Icon from '../../../common/Icon'
 import UserAvatarCurrentUser from '../../UserAvatar/CurrentUser'
 import NavBarMenuList from '../MenuList'
 import { useAppDispatch, useAppSelector } from '../../../stores/hooks'
@@ -46,8 +46,8 @@ export default function NavBarItem({ item }: Props) {
     <>
       <div
         className={`flex items-center ${item.menu
-            ? 'bg-gray-100 dark:bg-slate-800 lg:bg-transparent lg:dark:bg-transparent p-3 lg:p-0'
-            : ''
+          ? 'bg-gray-100 dark:bg-slate-800 lg:bg-transparent lg:dark:bg-transparent p-3 lg:p-0'
+          : ''
           }`}
         onClick={handleMenuClick}
       >
