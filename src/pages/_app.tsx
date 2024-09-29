@@ -78,7 +78,6 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
         </>
       )}
       <ToastContainer />
-
     </Provider>
   )
 }
