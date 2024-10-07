@@ -1,122 +1,40 @@
+import { SymptomInput } from "../../hooks/symptom"
+import { Res } from "../../interfaces"
 import { apiSlice } from "../storeApi"
-
-export type GetAllTasksProps = {
-    dir?: string,
-    page?: number,
-    sort?: string,
-    important?: boolean,
-    date?: string,
-    completed?: boolean,
-}
-
-export type getAllSuwarByQuranReciterProps = {
-    quranReciter: string
-}
-
 
 const symptomApiSlice = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
-        getAllDoctors: builder.mutation<[], { token: string }>({
-            query: ({ token }) => {
+        AddSymptom: builder.mutation<Res<SymptomInput>, SymptomInput>({
+            query: (body) => {
                 return {
-                    url: `/doctors`,
-                    method: 'GET',
-                    // headers: { authorization: token }
+                    url: `/symptoms`,
+                    method: 'POST',
+                    body,
                 }
             },
-            transformResponse: (res: any) => {
-                return res.data
+        }),
+        updateSymptom: builder.mutation<Res<SymptomInput>, { body: SymptomInput, id: string }>({
+            query: ({ body, id }) => {
+                return {
+                    url: `/symptoms/${id}`,
+                    method: 'PUT',
+                    body,
+                }
             },
         }),
-        // getAllSuwarByQuranReciter: builder.query<SurahType[], getAllSuwarByQuranReciterProps>({
-        //     query: ({ quranReciter }) => {
-        //         return {
-        //             url: `/quran/${quranReciter}/suwar`,
-        //             method: 'GET',
-        //         }
-        //     },
-        //     transformResponse: (res: any) => {
-        //         return res.data
-        //     }
-        // }),
-        // saveProgress: builder.mutation({
-        //     query: ({ body, token }: { body: UserProgress, token: string }) => {
-        //         return {
-        //             url: `/user/progress`,
-        //             method: 'PUT',
-        //             body: body,
-        //             headers: { authorization: token }
-        //         }
-        //     }
-        // }),
-        // getProgress: builder.mutation<{ data: { userProgress: UserProgress } }, { token: string }>({
-        //     query: ({ token }) => ({
-        //         url: `/user/progress`,
-        //         method: 'GET',
-        //         headers: { authorization: token }
-        //     }),
-        // }),
-        // addToPlaylist: builder.mutation({
-        //     query: ({ body, token }: { body: SurahType, token: string }) => {
-        //         return {
-        //             url: `/user/playlist`,
-        //             method: 'PUT',
-        //             body: body,
-        //             headers: { authorization: token }
-        //         }
-        //     }
-        // }),
-        // removeFromPlaylist: builder.mutation({
-        //     query: ({ surahId, token }: { surahId: string, token: string }) => {
-        //         return {
-        //             url: `/user/playlist`,
-        //             method: 'DELETE',
-        //             body: { surahId },
-        //             headers: { authorization: token }
-        //         }
-        //     }
-        // }),
-        // getPlaylist: builder.mutation<{ data: { playlist: SurahType[] } }, { token: string }>({
-        //     query: ({ token }) => ({
-        //         url: `/user/playlist`,
-        //         method: 'GET',
-        //         headers: { authorization: token }
-        //     }),
-        //     transformResponse: (res: any) => {
-        //         return res
-        //     },
-        // }),
-        // getMostPlayed: builder.mutation<{ data: { mostPlayed: SurahType[] } }, void>({
-        //     query: () => ({
-        //         url: `/quran/mostPlayed`,
-        //         method: 'GET',
-        //     }),
-        //     transformResponse: (res: any) => {
-        //         return res
-        //     },
-        // }),
-        // addSurahMostPlayed: builder.mutation({
-        //     query: ({ body }: { body: SurahType }) => ({
-        //         url: `/quran/playSurah`,
-        //         method: 'POST',
-        //         body,
-        //     }),
-        //     transformResponse: (res: any) => {
-        //         return res
-        //     },
-        // }),
-        // sendNotification: builder.mutation({
-        //     query: ({ subscription }: { subscription: any }) => {
-        //         return {
-        //             url: `/notification/subscribe`,
-        //             method: 'POST',
-        //             body: subscription,
-        //         }
-        //     }
-        // }),
+        deleteSymptom: builder.mutation<Res<null>, string>({
+            query: (id: string) => {
+                return {
+                    url: `/symptoms/${id}`,
+                    method: 'DELETE',
+                }
+            },
+        }),
     })
 })
 
 export const {
-    useGetAllQuranRecitersMutation,
+    useAddSymptomMutation,
+    useUpdateSymptomMutation,
+    useDeleteSymptomMutation,
 } = symptomApiSlice

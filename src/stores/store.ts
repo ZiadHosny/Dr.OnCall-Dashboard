@@ -3,11 +3,13 @@ import darkModeReducer from './darkModeSlice'
 import mainReducer from './mainSlice'
 import { apiSlice } from './storeApi'
 import errorMiddleware from './middlewares/errorMiddleware'
+import { loadingReducer } from './loadingSlice'
 
 export const store = configureStore({
   reducer: {
     [apiSlice.reducerPath]: apiSlice.reducer,
     darkMode: darkModeReducer,
+    loading: loadingReducer,
     main: mainReducer,
   },
   middleware: (getDefaultMiddleware) =>

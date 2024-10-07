@@ -1,18 +1,20 @@
-import useSWR from "swr"
-import { fetcher } from "../utils/fetcher"
+import { useFetch } from "./useFetch"
 
-type SymptomType = {
+export type SymptomType = {
     _id: string,
     symptomEn: string,
     symptomAr: string,
     createdAt: string,
 }
 
-export const useSymptoms = () => {
-    const { data, isLoading } = useSWR('symptoms', fetcher)
+export type SymptomInput = {
+    symptomEn: string,
+    symptomAr: string,
+}
 
+export const useSymptoms = () => {
+    const symptoms = useFetch<SymptomType[]>('symptoms');
     return {
-        symptoms: data?.data as SymptomType[] ?? [],
-        isLoading: isLoading && !data,
+        symptoms: symptoms ?? [],
     }
 }

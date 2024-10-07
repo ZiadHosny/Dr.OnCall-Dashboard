@@ -1,3 +1,4 @@
+import { Res } from "../../interfaces"
 import { apiSlice } from "../storeApi"
 
 export type LoginProps = {
@@ -5,17 +6,24 @@ export type LoginProps = {
     password: string,
 }
 
+export type LoginData = {
+    token: string,
+    user: {
+        name: string,
+        email: string,
+    },
+}
 
 const userApiSlice = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
-        login: builder.mutation({
-            query: ({ body }: { body: LoginProps }) => {
+        login: builder.mutation<Res<LoginData>, LoginProps>({
+            query: (body: LoginProps) => {
                 return {
                     url: `/users/login`,
                     method: 'POST',
-                    body,
+                    body: body,
                 }
-            }
+            },
         }),
     })
 })

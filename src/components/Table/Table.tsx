@@ -2,7 +2,6 @@ import React, { ReactNode, useState } from 'react'
 import { useSampleClients } from '../../hooks/sampleData'
 import Button from '../../common/Button'
 import Buttons from '../../common/Buttons'
-import CardBoxModal from '../CardBox/Modal'
 
 type Props = {
     tableHeads: string[],
@@ -25,35 +24,12 @@ const ZTable = ({ tableHeads, perPage, tableBody }: Props) => {
         pagesList.push(i)
     }
 
-    const [isModalTrashActive, setIsModalTrashActive] = useState(false)
-
-    const handleModalAction = () => {
-        // setIsModalInfoActive(false)
-        setIsModalTrashActive(false)
-    }
-
     return (
         <>
-            <CardBoxModal
-                title="Please confirm"
-                buttonColor="danger"
-                buttonLabel="Confirm"
-                isActive={isModalTrashActive}
-                onConfirm={handleModalAction}
-                onCancel={handleModalAction}
-            >
-                <p>
-                    Lorem ipsum dolor sit amet <b>adipiscing elit</b>
-                </p>
-                <p>This is sample modal</p>
-            </CardBoxModal>
-
             <div className="overflow-auto max-h-96">
-
                 <table className="min-w-full divide-y divide-gray-200">
                     <thead>
                         <tr>
-                            <th />
                             {tableHeads?.map((tableHead) => <th key={tableHead}>{tableHead}</th>)}
                             <th />
                         </tr>
@@ -62,7 +38,6 @@ const ZTable = ({ tableHeads, perPage, tableBody }: Props) => {
                         {tableBody}
                     </tbody>
                 </table>
-
             </div>
 
             <div className="p-3 lg:px-6 border-t border-gray-100 dark:border-slate-800">

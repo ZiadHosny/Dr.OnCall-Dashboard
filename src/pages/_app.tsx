@@ -9,6 +9,7 @@ import { Provider } from 'react-redux'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import '../css/main.css'
+import { LoadingIndicator } from '../common/Loading/LoadingIndicator'
 
 export type NextPageWithLayout<P = Record<string, unknown>, IP = P> = NextPage<P, IP> & {
   getLayout?: (page: ReactElement) => ReactNode
@@ -77,6 +78,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
           <Component {...pageProps} />
         </>
       )}
+      <LoadingIndicator />
       <ToastContainer />
     </Provider>
   )

@@ -9,10 +9,11 @@ import { useRouter } from 'next/router'
 
 type Props = {
   item: MenuAsideItem
-  isDropdownList?: boolean
+  isDropdownList?: boolean,
+  onClick: () => void
 }
 
-const AsideMenuItem = ({ item, isDropdownList = false }: Props) => {
+const AsideMenuItem = ({ item, isDropdownList = false, onClick }: Props) => {
   const [isLinkActive, setIsLinkActive] = useState(false)
   const [isDropdownActive, setIsDropdownActive] = useState(false)
 
@@ -67,7 +68,13 @@ const AsideMenuItem = ({ item, isDropdownList = false }: Props) => {
         </Link>
       )}
       {!item.href && (
-        <div className={componentClass} onClick={() => setIsDropdownActive(!isDropdownActive)}>
+        <div className={componentClass}
+          onClick={() => {
+            if (onClick)
+              onClick()
+            else
+              setIsDropdownActive(!isDropdownActive)
+          }}>
           {asideMenuItemInnerContents}
         </div>
       )}

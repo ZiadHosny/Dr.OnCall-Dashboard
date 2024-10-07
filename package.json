@@ -15,10 +15,12 @@
     "formik": "^2.4.2",
     "next": "^13.4.7",
     "next-auth": "^4.24.8",
+    "nookies": "^2.5.2",
     "numeral": "^2.0.6",
     "react": "^18.2.0",
     "react-chartjs-2": "^5.2.0",
     "react-dom": "^18.2.0",
+    "react-loader-spinner": "^6.1.6",
     "react-redux": "^8.1.1",
     "react-toastify": "^10.0.5",
     "swr": "^2.2.0"

@@ -39,7 +39,6 @@ const ProfilePage = () => {
       <Head>
         <title>{getPageTitle('Profile')}</title>
       </Head>
-
       <SectionMain>
         <SectionTitleLineWithButton icon={mdiAccount} title="Profile" main>
           <Button

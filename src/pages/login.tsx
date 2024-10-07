@@ -12,6 +12,9 @@ import Buttons from '../common/Buttons'
 import { useRouter } from 'next/router'
 import { getPageTitle } from '../config'
 import { useLoginMutation } from '../stores/api/userSlice'
+import { setCookie } from 'nookies'
+import { setUser } from '../stores/mainSlice'
+import { useAppDispatch } from '../stores/hooks'
 
 type LoginForm = {
   email: string
@@ -21,22 +24,39 @@ type LoginForm = {
 
 const LoginPage = () => {
   const router = useRouter()
-  const [login, { isLoading }] = useLoginMutation()
+  const [login,] = useLoginMutation()
+  const dispatch = useAppDispatch()
 
   const handleSubmit = async (formValues: LoginForm) => {
-    await login({
-      body: {
-        email: formValues.email,
-        password: formValues.password,
-      }
-    });
-    // router.push('/dashboard')
-    console.log('Form values', formValues)
+
+    const res = await login({
+      email: formValues.email,
+      password: formValues.password,
+    }).unwrap()
+
+    if (res?.data) {
+      const { token, user } = res.data
+
+      setCookie(null, 'token', token, {
+        maxAge: 30 * 24 * 60 * 60, // 30 days
+        path: '/',
+        secure: process.env.NODE_ENV === 'production', // use HTTPS only in production
+        sameSite: 'Strict',
+      });
+
+      localStorage['user'] = JSON.stringify({ email: user.email, name: user.name })
+      
+      dispatch(setUser({
+        email: user.email,
+        name: user.name,
+      }))
+      router.replace('/')
+    }
   }
 
   const initialValues: LoginForm = {
-    email: 'john.doe@email.com',
-    password: 'bG1sL9eQ1uD2sK3b',
+    email: 'admin@admin.com',
+    password: '123',
     remember: true,
   }
 
@@ -66,7 +86,6 @@ const LoginPage = () => {
 
               <Buttons>
                 <Button type="submit" label="Login" color="info" />
-                <Button href="/" label="Home" color="info" outline />
               </Buttons>
             </Form>
           </Formik>

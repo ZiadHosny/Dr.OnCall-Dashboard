@@ -1,3 +1,7 @@
 import { backendUrl } from "../envs";
+import { parseCookies } from 'nookies'
 
-export const fetcher = (url: string) => fetch(`${backendUrl}/${url}`).then((res) => res.json())
+export const fetcher = async (url: string) => {
+    const token = parseCookies()['token']
+    return fetch(`${backendUrl}/${url}`, { headers: { authorization: `Bearer ${token}` } }).then((res) => res.json())
+}
