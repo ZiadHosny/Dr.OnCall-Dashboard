@@ -1,5 +1,5 @@
 import { Children, cloneElement, ReactElement, ReactNode } from 'react'
-import Icon from '../../common/Icon'
+import Icon from '../Icon'
 import { ErrorMessage } from 'formik'
 
 type Props = {
