@@ -3,8 +3,10 @@ import { mdiLogout, mdiClose } from '@mdi/js'
 import Icon from '../../common/Icon'
 import AsideMenuItem from './Item'
 import AsideMenuList from './List'
+import { destroyCookie } from 'nookies'
 import { MenuAsideItem } from '../../interfaces'
 import { useAppSelector } from '../../stores/hooks'
+import { useRouter } from 'next/router'
 
 type Props = {
   menu: MenuAsideItem[]
@@ -14,6 +16,8 @@ type Props = {
 
 export default function AsideMenuLayer({ menu, className = '', ...props }: Props) {
   const darkMode = useAppSelector((state) => state.darkMode.isEnabled)
+  const router = useRouter()
+
 
   const logoutItem: MenuAsideItem = {
     label: 'Logout',
@@ -54,7 +58,13 @@ export default function AsideMenuLayer({ menu, className = '', ...props }: Props
           <AsideMenuList menu={menu} />
         </div>
         <ul>
-          <AsideMenuItem item={logoutItem} />
+          <AsideMenuItem
+            item={logoutItem}
+            onClick={() => {
+              destroyCookie(null, 'token')
+              localStorage.removeItem('user')
+              router.replace('/login')
+            }} />
         </ul>
       </div>
     </aside>

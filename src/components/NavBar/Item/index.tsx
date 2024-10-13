@@ -7,8 +7,11 @@ import Icon from '../../../common/Icon'
 import UserAvatarCurrentUser from '../../UserAvatar/CurrentUser'
 import NavBarMenuList from '../MenuList'
 import { useAppDispatch, useAppSelector } from '../../../stores/hooks'
-import { MenuNavBarItem } from '../../../interfaces'
 import { setDarkMode } from '../../../stores/darkModeSlice'
+import { destroyCookie } from 'nookies'
+import { useRouter } from 'next/router'
+import { MenuNavBarItem } from '../../../data/menuNavBar'
+
 
 type Props = {
   item: MenuNavBarItem
@@ -16,8 +19,9 @@ type Props = {
 
 export default function NavBarItem({ item }: Props) {
   const dispatch = useAppDispatch()
+  const router = useRouter()
 
-  const userName = useAppSelector((state) => state.main.userName)
+  const userName = useAppSelector((state) => state.main.name)
 
   const [isDropdownActive, setIsDropdownActive] = useState(false)
 
@@ -37,6 +41,12 @@ export default function NavBarItem({ item }: Props) {
       setIsDropdownActive(!isDropdownActive)
     }
 
+    if (item.isLogout) {
+      destroyCookie(null, 'token')
+      localStorage.removeItem('user')
+      router.replace('/login')
+    }
+
     if (item.isToggleLightDark) {
       dispatch(setDarkMode())
     }
@@ -52,7 +62,7 @@ export default function NavBarItem({ item }: Props) {
         onClick={handleMenuClick}
       >
         {item.isCurrentUser && <UserAvatarCurrentUser className="w-6 h-6 mr-3 inline-flex" />}
-        {item.icon && <Icon path={item.icon} className="transition-colors" />}
+        {item.icon && <Icon path={item.icon} isIconImg={item.isIconImg} className="transition-colors" />}
         <span
           className={`px-2 transition-colors ${item.isDesktopNoLabel && item.icon ? 'lg:hidden' : ''
             }`}
