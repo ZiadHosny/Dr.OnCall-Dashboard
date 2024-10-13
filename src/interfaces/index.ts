@@ -1,6 +1,13 @@
 export type UserPayloadObject = {
-  token: string;
-  
+  name: string
+  email: string
+}
+
+export type PaginationInfo = {
+  totalPages: number;
+  page: number;
+  limit: number;
+  totalLength: number;
 }
 
 export type MenuAsideItem = {
@@ -11,19 +18,6 @@ export type MenuAsideItem = {
   color?: ColorButtonKey
   isLogout?: boolean
   menu?: MenuAsideItem[]
-}
-
-export type MenuNavBarItem = {
-  label?: string
-  icon?: string
-  href?: string
-  target?: string
-  isDivider?: boolean
-  isLogout?: boolean
-  isDesktopNoLabel?: boolean
-  isToggleLightDark?: boolean
-  isCurrentUser?: boolean
-  menu?: MenuNavBarItem[]
 }
 
 export type ColorKey = 'white' | 'light' | 'contrast' | 'success' | 'danger' | 'warning' | 'info'
@@ -70,4 +64,15 @@ export type Client = {
 export type UserForm = {
   name: string
   email: string
+}
+
+export type Res<T> = {
+  message: string,
+  paginationInfo?: PaginationInfo
+  data: T,
+}
+
+export type GetProps = {
+  limit?: number,
+  page?: number
 }
