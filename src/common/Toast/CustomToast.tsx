@@ -1,20 +1,19 @@
-// CustomToast.js
-import React from 'react';
+'use client'
+import React from 'react'
+import { toast } from 'react-toastify'
 
-type ToastProps = {
-    message: string
+export const showSuccess = ({ message }: { message: string }) => {
+  toast.success(<span className="font-bold">{message}</span>, {
+    theme: localStorage['darkMode'] === 'dark' ? 'dark' : 'light',
+    autoClose: 3000,
+    closeOnClick: false,
+  })
 }
 
-export const SuccessToast = ({ message }: ToastProps) => (
-    <div className="toast-success">
-        {/* <h4>Success!</h4> */}
-        <p>{message}</p>
-    </div>
-);
-
-export const ErrorToast = ({ message }: ToastProps) => (
-    <div className="toast-error">
-        {/* <h4>Error!</h4> */}
-        <p>{message}</p>
-    </div>
-);
+export const showError = ({ message }: { message: string }) => {
+  toast.error(<span className="font-bold">{message}</span>, {
+    theme: localStorage['darkMode'] === 'dark' ? 'dark' : 'light',
+    autoClose: 3000,
+    closeOnClick: false,
+  })
+}

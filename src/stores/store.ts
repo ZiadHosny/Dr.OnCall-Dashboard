@@ -2,8 +2,8 @@ import { configureStore } from '@reduxjs/toolkit'
 import darkModeReducer from './darkModeSlice'
 import mainReducer from './mainSlice'
 import { apiSlice } from './storeApi'
-import errorMiddleware from './middlewares/errorMiddleware'
 import { loadingReducer } from './loadingSlice'
+import requestMiddleware from './middlewares/requestMiddleware'
 
 export const store = configureStore({
   reducer: {
@@ -13,7 +13,7 @@ export const store = configureStore({
     main: mainReducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(apiSlice.middleware).concat(errorMiddleware),
+    getDefaultMiddleware().concat(apiSlice.middleware).concat(requestMiddleware),
   devTools: true,
 })
 

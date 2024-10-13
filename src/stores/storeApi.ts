@@ -5,6 +5,6 @@ import { parseCookies } from 'nookies'
 const baseQuery = fetchBaseQuery({ baseUrl: backendUrl, headers: { authorization: `Bearer ${parseCookies()['token']}` } })
 export const apiSlice = createApi({
     baseQuery,
-    tagTypes: ['DrOnCall'],
+    tagTypes: ['GetSymptoms', 'GetDoctors'],
     endpoints: () => ({})
 })

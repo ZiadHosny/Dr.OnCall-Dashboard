@@ -1,5 +1,6 @@
 import React, { ReactNode } from 'react'
 import { containerMaxW } from '../config'
+import { ziadUrl } from '../envs'
 
 type Props = {
   children: ReactNode
@@ -14,8 +15,8 @@ export default function FooterBar({ children }: Props) {
         <div className="text-center md:text-left mb-6 md:mb-0">
           <b>
             &copy;{year},{` `}
-            <a href="https://justboil.me/" rel="noreferrer" target="_blank">
-              Zz.me
+            <a href={ziadUrl} rel="noreferrer" target="_blank">
+              Z.me
             </a>
             .
           </b>
@@ -23,11 +24,11 @@ export default function FooterBar({ children }: Props) {
           {children}
         </div>
         <div className="md:py-2">
-          <a href="https://justboil.me" rel="noreferrer" target="_blank">
-            Zz
+          <a href={ziadUrl} rel="noreferrer" target="_blank">
+            Ziad
           </a>
         </div>
       </div>
-    </footer>
+    </footer >
   )
 }
