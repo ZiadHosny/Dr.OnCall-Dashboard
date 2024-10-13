@@ -1,20 +1,11 @@
-import { useFetch } from "./useFetch"
+import { GetProps } from '../interfaces'
+import { useGetSymptomsQuery } from '../stores/api/symptomSlice'
 
-export type SymptomType = {
-    _id: string,
-    symptomEn: string,
-    symptomAr: string,
-    createdAt: string,
-}
+export const useSymptoms = (getProps: GetProps) => {
+  const { data: symptomsRes } = useGetSymptomsQuery(getProps)
 
-export type SymptomInput = {
-    symptomEn: string,
-    symptomAr: string,
-}
-
-export const useSymptoms = () => {
-    const symptoms = useFetch<SymptomType[]>('symptoms');
-    return {
-        symptoms: symptoms ?? [],
-    }
+  return {
+    symptoms: symptomsRes?.data ?? [],
+    paginationInfo: symptomsRes?.paginationInfo,
+  }
 }
