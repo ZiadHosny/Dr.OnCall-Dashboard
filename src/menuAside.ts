@@ -8,7 +8,7 @@ import {
   mdiViewList,
   mdiTelevisionGuide,
   mdiDoctor,
-  mdiSettingsHelper
+  mdiAllergy
 } from '@mdi/js'
 import { MenuAsideItem } from './interfaces'
 
@@ -26,7 +26,7 @@ const menuAside: MenuAsideItem[] = [
   {
     href: '/symptoms',
     label: 'Symptoms',
-    icon: mdiSettingsHelper,
+    icon: mdiAllergy,
   },
   {
     href: '/tables',
