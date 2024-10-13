@@ -10,10 +10,10 @@ import OverlayLayer from '../../common/OverlayLayer'
 type Props = {
   title: string
   buttonColor: ColorButtonKey
-  buttonLabel: string
+  buttonLabel?: string
   isActive: boolean
   children: ReactNode
-  onConfirm: () => void
+  onConfirm?: () => void
   onCancel?: () => void
 }
 
@@ -32,7 +32,7 @@ const CardBoxModal = ({
 
   const footer = (
     <Buttons>
-      <Button label={buttonLabel} color={buttonColor} onClick={onConfirm} />
+      {!!onConfirm && <Button label={buttonLabel} color={buttonColor} onClick={onConfirm} />}
       {!!onCancel && <Button label="Cancel" color={buttonColor} outline onClick={onCancel} />}
     </Buttons>
   )
