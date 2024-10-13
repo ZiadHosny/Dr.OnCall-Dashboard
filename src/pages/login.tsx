@@ -5,7 +5,7 @@ import CardBox from '../components/CardBox'
 import SectionFullScreen from '../components/Section/FullScreen'
 import LayoutGuest from '../layouts/Guest'
 import { Field, Form, Formik } from 'formik'
-import FormField from '../components/Form/Field'
+import FormField from '../common/Form/Field'
 import FormCheckRadio from '../components/Form/CheckRadio'
 import Divider from '../common/Divider'
 import Buttons from '../common/Buttons'
@@ -24,11 +24,10 @@ type LoginForm = {
 
 const LoginPage = () => {
   const router = useRouter()
-  const [login,] = useLoginMutation()
+  const [login] = useLoginMutation()
   const dispatch = useAppDispatch()
 
   const handleSubmit = async (formValues: LoginForm) => {
-
     const res = await login({
       email: formValues.email,
       password: formValues.password,
@@ -42,14 +41,16 @@ const LoginPage = () => {
         path: '/',
         secure: process.env.NODE_ENV === 'production', // use HTTPS only in production
         sameSite: 'Strict',
-      });
+      })
 
       localStorage['user'] = JSON.stringify({ email: user.email, name: user.name })
-      
-      dispatch(setUser({
-        email: user.email,
-        name: user.name,
-      }))
+
+      dispatch(
+        setUser({
+          email: user.email,
+          name: user.name,
+        })
+      )
       router.replace('/')
     }
   }
