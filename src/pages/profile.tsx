@@ -12,22 +12,24 @@ import type { ReactElement } from 'react'
 import Button from '../common/Button'
 import Buttons from '../common/Buttons'
 import Divider from '../common/Divider'
-import CardBox from '../components/CardBox'
-import CardBoxComponentBody from '../components/CardBox/Component/Body'
-import CardBoxComponentFooter from '../components/CardBox/Component/Footer'
-import FormField from '../components/Form/Field'
+import CardBox from '../common/CardBox'
+import CardBoxComponentBody from '../common/CardBox/Component/Body'
+import CardBoxComponentFooter from '../common/CardBox/Component/Footer'
+import FormField from '../common/Form/Field'
 import FormFilePicker from '../components/Form/FilePicker'
 import LayoutAuthenticated from '../layouts/Authenticated'
 import SectionMain from '../components/Section/Main'
 import SectionTitleLineWithButton from '../components/Section/TitleLineWithButton'
-import CardBoxUser from '../components/CardBox/User'
+import CardBoxUser from '../common/CardBox/User'
 import type { UserForm } from '../interfaces'
 import { getPageTitle } from '../config'
 import { useAppSelector } from '../stores/hooks'
 
 const ProfilePage = () => {
-  const userName = useAppSelector((state) => state.main.userName)
-  const userEmail = useAppSelector((state) => state.main.userEmail)
+  const main = useAppSelector((state) => state.main)
+  console.log(main, 'zzzzzzzzzzmaij')
+  const userName = useAppSelector((state) => state.main.name)
+  const userEmail = useAppSelector((state) => state.main.email)
 
   const userForm: UserForm = {
     name: userName,

@@ -1,7 +1,7 @@
 import type { ReactElement } from 'react'
 import Head from 'next/head'
 import Button from '../common/Button'
-import CardBox from '../components/CardBox'
+import CardBox from '../common/CardBox'
 import SectionFullScreen from '../components/Section/FullScreen'
 import LayoutGuest from '../layouts/Guest'
 import { Field, Form, Formik } from 'formik'

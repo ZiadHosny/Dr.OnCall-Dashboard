@@ -6,6 +6,7 @@ import {
   mdiGithub,
   mdiMonitorCellphone,
   mdiReload,
+  mdiDoctor,
 } from '@mdi/js'
 import Head from 'next/head'
 import React, { useState } from 'react'
@@ -14,13 +15,12 @@ import Button from '../common/Button'
 import LayoutAuthenticated from '../layouts/Authenticated'
 import SectionMain from '../components/Section/Main'
 import SectionTitleLineWithButton from '../components/Section/TitleLineWithButton'
-import CardBoxWidget from '../components/CardBox/Widget'
+import CardBoxWidget from '../common/CardBox/Widget'
 import { useSampleClients, useSampleTransactions } from '../hooks/sampleData'
-import CardBoxTransaction from '../components/CardBox/Transaction'
+import CardBoxTransaction from '../common/CardBox/Transaction'
 import { Client, Transaction } from '../interfaces'
-import CardBoxClient from '../components/CardBox/Client'
-import SectionBannerStarOnGitHub from '../components/Section/Banner/StarOnGitHub'
-import CardBox from '../components/CardBox'
+import CardBoxClient from '../common/CardBox/Client'
+import CardBox from '../common/CardBox'
 import { sampleChartData } from '../components/ChartLineSample/config'
 import ChartLineSample from '../components/ChartLineSample'
 import NotificationBar from '../components/NotificationBar'
@@ -49,7 +49,7 @@ const DashboardPage = () => {
       <SectionMain>
         <SectionTitleLineWithButton icon={mdiChartTimelineVariant} title="Overview" main>
           <Button
-            href="https://github.com/justboil/admin-one-react-tailwind"
+            href="https://github.com/ZiadHosny"
             target="_blank"
             icon={mdiGithub}
             label="Star on GitHub"
@@ -60,6 +60,15 @@ const DashboardPage = () => {
         </SectionTitleLineWithButton>
 
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-3 mb-6">
+          <CardBoxWidget
+            trendLabel="12%"
+            trendType="up"
+            trendColor="success"
+            icon={mdiDoctor}
+            iconColor="success"
+            number={512}
+            label="Doctors"
+          />
           <CardBoxWidget
             trendLabel="12%"
             trendType="up"
@@ -79,7 +88,7 @@ const DashboardPage = () => {
             numberPrefix="$"
             label="Sales"
           />
-          <CardBoxWidget
+          {/* <CardBoxWidget
             trendLabel="Overflow"
             trendType="warning"
             trendColor="warning"
@@ -88,7 +97,7 @@ const DashboardPage = () => {
             number={256}
             numberSuffix="%"
             label="Performance"
-          />
+          /> */}
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
@@ -104,9 +113,9 @@ const DashboardPage = () => {
           </div>
         </div>
 
-        <div className="my-6">
+        {/* <div className="my-6">
           <SectionBannerStarOnGitHub />
-        </div>
+        </div> */}
 
         <SectionTitleLineWithButton icon={mdiChartPie} title="Trends overview">
           <Button icon={mdiReload} color="whiteDark" onClick={fillChartData} />

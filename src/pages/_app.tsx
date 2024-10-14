@@ -6,8 +6,8 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import { store } from '../stores/store'
 import { Provider } from 'react-redux'
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 import '../css/main.css'
 import { LoadingIndicator } from '../common/Loading/LoadingIndicator'
 
