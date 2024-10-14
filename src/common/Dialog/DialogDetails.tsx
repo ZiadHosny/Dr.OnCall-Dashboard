@@ -1,5 +1,5 @@
 import React, { Dispatch, SetStateAction } from 'react'
-import CardBoxModal from '../../components/CardBox/Modal'
+import CardBoxModal from '../CardBox/Modal'
 
 type Props = {
   title: string
@@ -22,7 +22,7 @@ export const DialogDetails = ({ title, values, isActive, setIsActive }: Props) =
       onCancel={handleModalInfoActionCancel}
     >
       {Object.keys(values).map((e) => (
-        <div key={e} className="w-full">
+        <div key={e} className="w-full break-words">
           {e} : <span className="font-bold text-blue-500">{values[e]}</span>
         </div>
       ))}
