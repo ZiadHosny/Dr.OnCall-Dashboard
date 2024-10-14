@@ -2,8 +2,8 @@ import { mdiCashMinus, mdiCashPlus, mdiCreditCard, mdiReceipt } from '@mdi/js'
 import React from 'react'
 import { Transaction } from '../../interfaces'
 import CardBox from '.'
-import IconRounded from '../../common/Icon/Rounded'
-import PillTag from '../PillTag'
+import IconRounded from '../Icon/Rounded'
+import PillTag from '../../components/PillTag'
 
 type Props = {
   transaction: Transaction

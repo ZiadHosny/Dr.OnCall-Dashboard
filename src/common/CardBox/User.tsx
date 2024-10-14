@@ -2,9 +2,9 @@ import { mdiCheckDecagram } from '@mdi/js'
 import { Field, Form, Formik } from 'formik'
 import { useAppSelector } from '../../stores/hooks'
 import CardBox from '.'
-import FormCheckRadio from '../Form/CheckRadio'
-import PillTag from '../PillTag'
-import UserAvatarCurrentUser from '../UserAvatar/CurrentUser'
+import FormCheckRadio from '../../components/Form/CheckRadio'
+import PillTag from '../../components/PillTag'
+import UserAvatarCurrentUser from '../../components/UserAvatar/CurrentUser'
 
 type Props = {
   className?: string

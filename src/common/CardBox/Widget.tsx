@@ -2,11 +2,11 @@ import { mdiCog } from '@mdi/js'
 import React from 'react'
 import { ColorKey, TrendType } from '../../interfaces'
 import { colorsText } from '../../colors'
-import Button from '../../common/Button'
-import Icon from '../../common/Icon'
+import Button from '../Button'
+import Icon from '../Icon'
 import CardBox from '.'
-import NumberDynamic from '../../common/NumberDynamic'
-import PillTagTrend from '../PillTag/Trend'
+import NumberDynamic from '../NumberDynamic'
+import PillTagTrend from '../../components/PillTag/Trend'
 
 type Props = {
   number: number

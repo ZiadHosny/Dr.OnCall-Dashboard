@@ -1,6 +1,6 @@
 import React from 'react'
-import { MenuNavBarItem } from '../../interfaces'
 import NavBarItem from './Item'
+import { MenuNavBarItem } from '../../data/menuNavBar'
 
 type Props = {
   menu: MenuNavBarItem[]

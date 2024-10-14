@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react'
-import CardBoxComponentBody from './Component/Body'
-import CardBoxComponentFooter from './Component/Footer'
+import CardBoxComponentBody from '../../common/CardBox/Component/Body'
+import CardBoxComponentFooter from '../../common/CardBox/Component/Footer'
 
 type Props = {
   rounded?: string

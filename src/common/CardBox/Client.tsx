@@ -2,8 +2,8 @@ import { mdiTrendingDown, mdiTrendingNeutral, mdiTrendingUp } from '@mdi/js'
 import React from 'react'
 import { Client } from '../../interfaces'
 import CardBox from '.'
-import PillTag from '../PillTag'
-import UserAvatar from '../UserAvatar'
+import PillTag from '../../components/PillTag'
+import UserAvatar from '../../components/UserAvatar'
 
 type Props = {
   client: Client
