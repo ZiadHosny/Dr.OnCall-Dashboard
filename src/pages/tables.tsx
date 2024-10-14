@@ -8,7 +8,7 @@ import LayoutAuthenticated from '../layouts/Authenticated'
 import NotificationBar from '../components/NotificationBar'
 import SectionMain from '../components/Section/Main'
 import SectionTitleLineWithButton from '../components/Section/TitleLineWithButton'
-import TableSampleClients from '../components/Table/SampleClients'
+import TableSampleClients from '../common/Table/SampleClients'
 import { getPageTitle } from '../config'
 
 const TablesPage = () => {

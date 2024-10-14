@@ -1,26 +1,11 @@
-import useSWR from "swr"
-import { fetcher } from "../utils/fetcher"
+import { GetProps } from "../interfaces";
+import { useGetDoctorsQuery } from "../stores/api/doctorSlice";
 
-type DoctorType = {
-    _id: string,
-    user: {
-        name: string,
-        email: string,
-        password: string,
-        phone: string,
-    };
-    imageUrl: string;
-    specialty: string;
-    rating: number;
-    userRating: number | null;
-    createdAt: string
-}
-
-export const useDoctors = () => {
-    const { data, isLoading } = useSWR('doctors', fetcher)
+export const useDoctors = (getProps: GetProps) => {
+    const { data: doctorsRes } = useGetDoctorsQuery(getProps);
 
     return {
-        doctors: data?.data as DoctorType[] ?? [],
-        isLoading: isLoading && !data,
+        doctors: doctorsRes?.data ?? [],
+        paginationInfo: doctorsRes?.paginationInfo
     }
 }

@@ -1,7 +1,7 @@
 import { mdiEye, mdiTrashCan, mdiPencil } from '@mdi/js'
 import Button from '../../common/Button'
 import Buttons from '../../common/Buttons'
-import ZTable from '../Table/Table'
+import ZTable from '../../common/Table/Table'
 import { useSymptoms } from '../../hooks/symptom'
 import { useState } from 'react'
 import { EditSymptom } from './EditSymptom'
