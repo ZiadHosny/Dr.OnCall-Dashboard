@@ -1,7 +1,7 @@
 import { Field, Form, Formik } from 'formik'
 import FormField from '../../common/Form/Field'
 import { useAddSymptomMutation } from '../../stores/api/symptomSlice'
-import CardBoxModal from '../CardBox/Modal'
+import CardBoxModal from '../../common/CardBox/Modal'
 import { Dispatch, SetStateAction } from 'react'
 import { SymptomInput, SymptomSchema } from './symptom.interface'
 import { areAllFieldsTouched } from '../../utils/validation'

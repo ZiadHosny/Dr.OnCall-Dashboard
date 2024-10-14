@@ -5,9 +5,10 @@ import ZTable from '../Table/Table'
 import { useSymptoms } from '../../hooks/symptom'
 import { useState } from 'react'
 import { EditSymptom } from './EditSymptom'
-import { DeleteSymptom } from './DeleteSymptom'
 import { DialogDetails } from '../../common/Dialog/DialogDetails'
 import { SymptomType } from './symptom.interface'
+import { DialogDelete } from '../../common/Dialog/DialogDelete'
+import { useDeleteSymptomMutation } from '../../stores/api/symptomSlice'
 
 const tableHeads = ['Symptom In English', 'Symptom In Arabic', 'Created At']
 
@@ -19,6 +20,7 @@ export const SymptomsTable = () => {
   const [isModalTrashActive, setIsModalTrashActive] = useState(false)
   const [isModalEditActive, setIsModalEditActive] = useState(false)
   const [currentSymptom, setCurrentSymptom] = useState<SymptomType>(null)
+  const [deleteSymptom] = useDeleteSymptomMutation()
 
   const TableBody = () => {
     return (
@@ -31,10 +33,13 @@ export const SymptomsTable = () => {
           />
         )}
         {currentSymptom && (
-          <DeleteSymptom
+          <DialogDelete
             isActive={isModalTrashActive}
             setIsActive={setIsModalTrashActive}
-            values={currentSymptom}
+            id={currentSymptom._id}
+            name={currentSymptom.symptomEn}
+            title={'Symptom'}
+            deleteFn={deleteSymptom}
           />
         )}
         {currentSymptom && (
@@ -50,7 +55,6 @@ export const SymptomsTable = () => {
             }}
           />
         )}
-
         {symptoms?.map((symptom) => (
           <tr key={symptom._id}>
             <td data-label="symptomEn">{symptom.symptomEn}</td>
@@ -63,8 +67,8 @@ export const SymptomsTable = () => {
                   color="info"
                   icon={mdiEye}
                   onClick={() => {
-                    setIsModalInfoActive(true)
                     setCurrentSymptom(symptom)
+                    setIsModalInfoActive(true)
                   }}
                   small
                 />
@@ -72,8 +76,8 @@ export const SymptomsTable = () => {
                   color="warning"
                   icon={mdiPencil}
                   onClick={() => {
-                    setIsModalEditActive(true)
                     setCurrentSymptom(symptom)
+                    setIsModalEditActive(true)
                   }}
                   small
                 />
@@ -81,8 +85,8 @@ export const SymptomsTable = () => {
                   color="danger"
                   icon={mdiTrashCan}
                   onClick={() => {
-                    setIsModalTrashActive(true)
                     setCurrentSymptom(symptom)
+                    setIsModalTrashActive(true)
                   }}
                   small
                 />

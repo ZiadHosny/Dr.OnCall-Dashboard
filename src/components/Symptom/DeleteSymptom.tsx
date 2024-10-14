@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction } from 'react'
-import CardBoxModal from '../CardBox/Modal'
+import CardBoxModal from '../../common/CardBox/Modal'
 import { useDeleteSymptomMutation } from '../../stores/api/symptomSlice'
 import { SymptomType } from './symptom.interface'
 
